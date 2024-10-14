@@ -1,12 +1,15 @@
-groq_api_key="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"
+
 from langchain_groq import ChatGroq
 from langchain_core.prompts import PromptTemplate
 from langserve import add_routes
 from fastapi import FastAPI
 import uvicorn
+from dotenv import load_dotenv
+load_dotenv()
 import os
+
 llm=ChatGroq(temperature=0,
-             groq_api_key=groq_api_key,
+             groq_api_key=os.getenv("groq_api_key"),
              model_name="llama-3.1-70b-versatile")
 
 
